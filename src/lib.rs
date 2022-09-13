@@ -6,6 +6,7 @@ mod p0200;
 mod p0342;
 mod p0383;
 mod p0387;
+mod p0393;
 mod p0637;
 mod p0804;
 mod p0948;
