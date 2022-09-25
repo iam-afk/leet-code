@@ -27,27 +27,10 @@ mod tests {
     #[test]
     fn example() {
         assert_eq!(
-            Solution::good_nodes(TreeNode::from(vec![
-                Some(3),
-                Some(1),
-                Some(4),
-                Some(3),
-                None,
-                Some(1),
-                Some(5)
-            ])),
+            Solution::good_nodes(crate::tree![3, 1, 4, 3, null, 1, 5]),
             4
         );
-        assert_eq!(
-            Solution::good_nodes(TreeNode::from(vec![
-                Some(3),
-                Some(3),
-                None,
-                Some(4),
-                Some(2)
-            ])),
-            3
-        );
-        assert_eq!(Solution::good_nodes(TreeNode::from(vec![Some(1)])), 1);
+        assert_eq!(Solution::good_nodes(crate::tree![3, 3, null, 4, 2]), 3);
+        assert_eq!(Solution::good_nodes(crate::tree![1]), 1);
     }
 }

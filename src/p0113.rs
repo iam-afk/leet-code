@@ -42,35 +42,13 @@ mod tests {
     fn example() {
         assert_eq!(
             Solution::path_sum(
-                TreeNode::from(vec![
-                    Some(5),
-                    Some(4),
-                    Some(8),
-                    Some(11),
-                    None,
-                    Some(13),
-                    Some(4),
-                    Some(7),
-                    Some(2),
-                    None,
-                    None,
-                    None,
-                    None,
-                    Some(5),
-                    Some(1)
-                ]),
+                crate::tree![5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1],
                 22
             ),
             [[5, 4, 11, 2], [5, 8, 4, 5]]
         );
         const EMPTY: Vec<Vec<i32>> = Vec::new();
-        assert_eq!(
-            Solution::path_sum(TreeNode::from(vec![Some(1), Some(2), Some(3)]), 5),
-            EMPTY
-        );
-        assert_eq!(
-            Solution::path_sum(TreeNode::from(vec![Some(1), Some(2)]), 0),
-            EMPTY
-        );
+        assert_eq!(Solution::path_sum(crate::tree![1, 2, 3], 5), EMPTY);
+        assert_eq!(Solution::path_sum(crate::tree![1, 2], 0), EMPTY);
     }
 }

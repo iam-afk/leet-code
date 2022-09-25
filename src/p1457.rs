@@ -45,36 +45,15 @@ mod tests {
     #[test]
     fn example() {
         assert_eq!(
-            Solution::pseudo_palindromic_paths(TreeNode::from(vec![
-                Some(2),
-                Some(3),
-                Some(1),
-                Some(3),
-                Some(1),
-                None,
-                Some(1),
-            ])),
+            Solution::pseudo_palindromic_paths(crate::tree![2, 3, 1, 3, 1, null, 1,]),
             2
         );
         assert_eq!(
-            Solution::pseudo_palindromic_paths(TreeNode::from(vec![
-                Some(2),
-                Some(1),
-                Some(1),
-                Some(1),
-                Some(3),
-                None,
-                None,
-                None,
-                None,
-                None,
-                Some(1),
-            ])),
+            Solution::pseudo_palindromic_paths(crate::tree![
+                2, 1, 1, 1, 3, null, null, null, null, null, 1,
+            ]),
             1
         );
-        assert_eq!(
-            Solution::pseudo_palindromic_paths(TreeNode::from(vec![Some(9)])),
-            1
-        );
+        assert_eq!(Solution::pseudo_palindromic_paths(crate::tree![9]), 1);
     }
 }

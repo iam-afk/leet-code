@@ -36,25 +36,11 @@ mod tests {
     #[test]
     fn example() {
         assert_eq!(
-            Solution::average_of_levels(TreeNode::from(vec![
-                Some(3),
-                Some(9),
-                Some(20),
-                None,
-                None,
-                Some(15),
-                Some(7)
-            ])),
+            Solution::average_of_levels(crate::tree![3, 9, 20, null, null, 15, 7]),
             [3.00000, 14.50000, 11.00000]
         );
         assert_eq!(
-            Solution::average_of_levels(TreeNode::from(vec![
-                Some(3),
-                Some(9),
-                Some(20),
-                Some(15),
-                Some(7)
-            ])),
+            Solution::average_of_levels(crate::tree![3, 9, 20, 15, 7]),
             [3.00000, 14.50000, 11.00000]
         );
     }

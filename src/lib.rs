@@ -44,21 +44,86 @@ impl TreeNode {
             right: None,
         }
     }
+}
 
-    pub fn from(vec: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
-        Self::node(0, vec.as_slice())
-    }
+#[macro_export]
+macro_rules! tree {
+    () => {
+        None::<Rc<RefCell<TreeNode>>>
+    };
+    ($($rest:tt)*) => {
+        $crate::tree_root!($($rest)*)
+    };
+}
 
-    fn node(index: usize, vec: &[Option<i32>]) -> Option<Rc<RefCell<TreeNode>>> {
-        if index < vec.len() {
-            if let Some(val) = vec[index] {
-                return Some(Rc::new(RefCell::new(TreeNode {
-                    val,
-                    left: Self::node(index * 2 + 1, vec),
-                    right: Self::node(index * 2 + 2, vec),
-                })));
-            }
+#[macro_export]
+macro_rules! tree_root {
+    ($val:expr) => {
+        Some(Rc::new(RefCell::new(TreeNode::new($val))))
+    };
+    ($val:expr, $($rest:tt)*) => {{
+        let root = Rc::new(RefCell::new(TreeNode::new($val)));
+        let mut queue = ::std::collections::VecDeque::new();
+        queue.push_back(root.clone());
+        $crate::tree_inner!{queue, $($rest)*}
+        Some(root)
+    }}
+}
+
+#[macro_export]
+macro_rules! tree_inner {
+    ($queue:expr) => {};
+    ($queue:expr,) => {};
+    ($queue:expr, null, null $(,)?) => {
+        $queue.pop_front().unwrap();
+    };
+    ($queue:expr, null, $right:expr $(,)?) => {
+        {
+            let right = Rc::new(RefCell::new(TreeNode::new($right)));
+            let node = $queue.pop_front().unwrap();
+            let mut node = node.borrow_mut();
+            node.right = Some(right.clone());
+            $queue.push_back(right);
         }
-        None
-    }
+    };
+    ($queue:expr, $left:expr, null $(,)?) => {
+        {
+            let left = Rc::new(RefCell::new(TreeNode::new($left)));
+            let node = $queue.pop_front().unwrap();
+            let mut node = node.borrow_mut();
+            node.left = Some(left.clone());
+            $queue.push_back(left);
+        }
+    };
+    ($queue:expr, $left:expr $(,)?) => {
+        $crate::tree_inner!($queue, $left, null)
+    };
+    ($queue:expr, $left:expr, $right:expr $(,)?) => {
+        {
+            let left = Rc::new(RefCell::new(TreeNode::new($left)));
+            let right = Rc::new(RefCell::new(TreeNode::new($right)));
+            let node = $queue.pop_front().unwrap();
+            let mut node = node.borrow_mut();
+            node.left = Some(left.clone());
+            node.right = Some(right.clone());
+            $queue.push_back(left);
+            $queue.push_back(right);
+        }
+    };
+    ($queue:expr, null, null, $($rest:tt)*) => {
+        $crate::tree_inner!($queue, null, null);
+        $crate::tree_inner!($queue, $($rest)*)
+    };
+    ($queue:expr, $left:expr, null, $($rest:tt)*) => {
+        $crate::tree_inner!($queue, $left, null);
+        $crate::tree_inner!($queue, $($rest)*)
+    };
+    ($queue:expr, null, $right:expr, $($rest:tt)*) => {
+        $crate::tree_inner!($queue, null, $right);
+        $crate::tree_inner!($queue, $($rest)*)
+    };
+    ($queue:expr, $left:expr, $right:expr, $($rest:tt)*) => {
+        $crate::tree_inner!($queue, $left, $right);
+        $crate::tree_inner!($queue, $($rest)*)
+    };
 }
