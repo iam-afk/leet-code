@@ -128,3 +128,33 @@ macro_rules! tree_inner {
         $crate::tree_inner!($queue, $($rest)*)
     };
 }
+
+#[macro_export]
+macro_rules! assert_design {
+    ($i:ident : $t:tt; []; []; [] $(;)?) => {};
+    ($i:ident : $t:tt; [$m:tt]; [[$($p:tt)*]]; [$r:tt] $(;)?) => {
+        $crate::assert_call! { $i: $t; $m($($p)*) => $r }
+    };
+    ($i:ident : $t:tt; [$m:tt, $($ms:tt)*]; [[$($p:tt)*], $($ps:tt)*]; [$r:tt, $($rs:tt)*] $(;)?) => {
+        $crate::assert_call! { $i: $t; $m($($p)*) => $r }
+        $crate::assert_design! {
+            $i: $t;
+            [$($ms)*];
+            [$($ps)*];
+            [$($rs)*];
+        }
+    };
+}
+
+#[macro_export]
+macro_rules! assert_call {
+    ($i:ident: $t:tt; new($($p:tt)*) => null) => {
+        let mut $i = $t::new($($p)*);
+    };
+    ($i:ident: $t:tt; $m:tt($($p:tt)*) => null) => {
+        $i.$m($($p)*);
+    };
+    ($i:ident: $t:tt; $m:tt($($p:tt)*) => $r:tt) => {
+        assert_eq!($i.$m($($p)*), $r, stringify!($i.$m($($p)*)));
+    };
+}

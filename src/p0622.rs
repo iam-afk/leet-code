@@ -5,13 +5,12 @@ struct MyCircularQueue {
     tail: usize,
 }
 
-
 /**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
+#[allow(dead_code)]
 impl MyCircularQueue {
-
     fn new(k: i32) -> Self {
         Self {
             inner: vec![-1; k as usize],
@@ -67,13 +66,19 @@ impl MyCircularQueue {
     }
 }
 
-/**
- * Your MyCircularQueue object will be instantiated and called as such:
- * let obj = MyCircularQueue::new(k);
- * let ret_1: bool = obj.en_queue(value);
- * let ret_2: bool = obj.de_queue();
- * let ret_3: i32 = obj.front();
- * let ret_4: i32 = obj.rear();
- * let ret_5: bool = obj.is_empty();
- * let ret_6: bool = obj.is_full();
- */
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn example() {
+        crate::assert_design! {
+            obj: MyCircularQueue;
+            [new, en_queue, en_queue, en_queue, en_queue, rear, is_full, de_queue, en_queue, rear];
+            [[3], [1], [2], [3], [4], [], [], [], [4], []];
+            [null, true, true, true, false, 3, true, true, true, 4];
+        }
+        assert_eq!(obj.front(), 2);
+        assert!(!obj.is_empty())
+    }
+}
