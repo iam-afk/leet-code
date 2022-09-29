@@ -53,17 +53,17 @@ macro_rules! tree {
     () => {
         None::<Rc<RefCell<TreeNode>>>
     };
-    ($($rest:tt)*) => {
+    ($($rest:tt)+) => {
         $crate::tree_root!($($rest)*)
     };
 }
 
 #[macro_export]
 macro_rules! tree_root {
-    ($val:expr) => {
+    ($val:expr $(,)?) => {
         Some(Rc::new(RefCell::new(TreeNode::new($val))))
     };
-    ($val:expr, $($rest:tt)*) => {{
+    ($val:expr, $($rest:tt)+) => {{
         let root = Rc::new(RefCell::new(TreeNode::new($val)));
         let mut queue = ::std::collections::VecDeque::new();
         queue.push_back(root.clone());
@@ -74,8 +74,9 @@ macro_rules! tree_root {
 
 #[macro_export]
 macro_rules! tree_inner {
-    ($queue:expr) => {};
-    ($queue:expr,) => {};
+    ($queue:expr, $left:expr $(,)?) => {
+        $crate::tree_inner!($queue, $left, null);
+    };
     ($queue:expr, null, null $(,)?) => {
         $queue.pop_front().unwrap();
     };
@@ -97,9 +98,6 @@ macro_rules! tree_inner {
             $queue.push_back(left);
         }
     };
-    ($queue:expr, $left:expr $(,)?) => {
-        $crate::tree_inner!($queue, $left, null)
-    };
     ($queue:expr, $left:expr, $right:expr $(,)?) => {
         {
             let left = Rc::new(RefCell::new(TreeNode::new($left)));
@@ -112,22 +110,22 @@ macro_rules! tree_inner {
             $queue.push_back(right);
         }
     };
-    ($queue:expr, null, null, $($rest:tt)*) => {
-        $crate::tree_inner!($queue, null, null);
-        $crate::tree_inner!($queue, $($rest)*)
-    };
-    ($queue:expr, $left:expr, null, $($rest:tt)*) => {
-        $crate::tree_inner!($queue, $left, null);
-        $crate::tree_inner!($queue, $($rest)*)
-    };
-    ($queue:expr, null, $right:expr, $($rest:tt)*) => {
-        $crate::tree_inner!($queue, null, $right);
-        $crate::tree_inner!($queue, $($rest)*)
-    };
-    ($queue:expr, $left:expr, $right:expr, $($rest:tt)*) => {
+    ($queue:expr, $left:tt, $right:tt, $($rest:tt)+) => {
         $crate::tree_inner!($queue, $left, $right);
         $crate::tree_inner!($queue, $($rest)*)
     };
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn tree_macro() {
+        assert_eq!(tree![], None);
+        assert_eq!(Some(Rc::new(RefCell::new(TreeNode::new(1)))), tree!(1));
+        assert_eq!(Some(Rc::new(RefCell::new(TreeNode::new(1)))), tree! { 1, });
+    }
 }
 
 #[macro_export]
