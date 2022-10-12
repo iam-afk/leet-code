@@ -22,6 +22,7 @@ mod p0732;
 mod p0804;
 mod p0948;
 mod p0967;
+mod p0976;
 mod p0981;
 mod p0985;
 mod p0990;
