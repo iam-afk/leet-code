@@ -36,6 +36,7 @@ mod p1578;
 mod p1680;
 mod p1996;
 mod p2007;
+mod p2095;
 
 pub struct Solution;
 
@@ -138,6 +139,35 @@ mod tests {
         assert_eq!(Some(Rc::new(RefCell::new(TreeNode::new(1)))), tree!(1));
         assert_eq!(Some(Rc::new(RefCell::new(TreeNode::new(1)))), tree! { 1, });
     }
+}
+
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+
+#[macro_export]
+macro_rules! list {
+    () => {
+        None
+    };
+    ($val:expr $(,)?) => {
+        Some(Box::new(ListNode::new($val)))
+    };
+    ($val:expr, $($rest:tt)+) => {
+        Some(Box::new(ListNode {
+            next: $crate::list!($($rest)*),
+            val: $val
+        }))
+    };
 }
 
 #[macro_export]
