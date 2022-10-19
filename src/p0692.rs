@@ -6,7 +6,7 @@ impl Solution {
     pub fn top_k_frequent(words: Vec<String>, mut k: i32) -> Vec<String> {
         let mut counts = HashMap::new();
         for word in &words {
-            counts.entry(word).and_modify(|c| *c += 1).or_insert(1);
+            *counts.entry(word).or_insert(0) += 1;
         }
         let mut frequency: BTreeMap<i32, Vec<&String>> = BTreeMap::new();
         for (word, count) in counts {
