@@ -24,6 +24,7 @@ mod p0692;
 mod p0718;
 mod p0732;
 mod p0804;
+mod p0835;
 mod p0948;
 mod p0967;
 mod p0976;
