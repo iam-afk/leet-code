@@ -6,11 +6,9 @@ impl Solution {
     pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
         let mut anagrams = HashMap::new();
         for str in strs {
-            let count = str.bytes().map(|b| b - b'a').fold([0; 26], |mut count, b| {
-                count[b as usize] += 1;
-                count
-            });
-            anagrams.entry(count).or_insert(Vec::new()).push(str);
+            let mut key: Vec<_> = str.bytes().collect();
+            key.sort();
+            anagrams.entry(key).or_insert(Vec::new()).push(str);
         }
         anagrams.into_values().collect()
     }
