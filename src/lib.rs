@@ -12,6 +12,7 @@ mod p0126;
 mod p0200;
 mod p0219;
 mod p0342;
+mod p0345;
 mod p0383;
 mod p0387;
 mod p0393;
