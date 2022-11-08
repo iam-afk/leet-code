@@ -1,0 +1,9 @@
+.*
+!.gitignore
+
+debug/
+target/
+
+Cargo.lock
+
+**/*.rs.bk
