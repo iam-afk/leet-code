@@ -1,7 +1,7 @@
 use crate::Solution;
 
 impl Solution {
-    pub fn remove_duplicates(s: String) -> String {
+    pub fn remove_duplicates_2(s: String) -> String {
         let mut s = s.into_bytes();
         let mut len = 0usize;
         for j in 0..s.len() {
@@ -23,7 +23,7 @@ mod tests {
 
     #[test]
     fn example() {
-        assert_eq!(Solution::remove_duplicates("abbaca".into()), "ca");
-        assert_eq!(Solution::remove_duplicates("azxxzy".into()), "ay");
+        assert_eq!(Solution::remove_duplicates_2("abbaca".into()), "ca");
+        assert_eq!(Solution::remove_duplicates_2("azxxzy".into()), "ay");
     }
 }
