@@ -18,6 +18,7 @@ mod p0222;
 mod p0295;
 mod p0342;
 mod p0345;
+mod p0374;
 mod p0383;
 mod p0387;
 mod p0393;
@@ -221,4 +222,8 @@ macro_rules! assert_call {
     ($i:ident: $t:tt; $m:tt($($p:tt)*) => $r:tt) => {
         assert_eq!($i.$m($($p)*), $r, stringify!($i.$m($($p)*)));
     };
+}
+
+unsafe fn guess(num: i32) -> i32 {
+    0
 }
