@@ -59,6 +59,7 @@ mod p1544;
 mod p1578;
 mod p1662;
 mod p1680;
+mod p1926;
 mod p1996;
 mod p2007;
 mod p2095;
