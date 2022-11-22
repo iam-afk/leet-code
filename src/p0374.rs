@@ -1,7 +1,12 @@
-use crate::guess;
 use crate::Solution;
 
+#[allow(dead_code)]
+unsafe fn guess(_num: i32) -> i32 {
+    0
+}
+
 impl Solution {
+    #[allow(dead_code, non_snake_case)]
     unsafe fn guessNumber(n: i32) -> i32 {
         let mut left = 1;
         let mut right = n;

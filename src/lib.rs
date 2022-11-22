@@ -227,7 +227,3 @@ macro_rules! assert_call {
         assert_eq!($i.$m($($p)*), $r, stringify!($i.$m($($p)*)));
     };
 }
-
-unsafe fn guess(num: i32) -> i32 {
-    0
-}
