@@ -70,6 +70,7 @@ mod p1926;
 mod p1996;
 mod p2007;
 mod p2095;
+mod p2225;
 
 pub struct Solution;
 
