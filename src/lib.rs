@@ -1,3 +1,4 @@
+mod p0006;
 mod p0012;
 mod p0013;
 mod p0016;
