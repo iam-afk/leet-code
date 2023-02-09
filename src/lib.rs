@@ -78,6 +78,7 @@ mod p1996;
 mod p2007;
 mod p2095;
 mod p2225;
+mod p2306;
 
 pub struct Solution;
 
