@@ -71,6 +71,7 @@ mod p1338;
 mod p1448;
 mod p1457;
 mod p1470;
+mod p1523;
 mod p1544;
 mod p1578;
 mod p1662;
