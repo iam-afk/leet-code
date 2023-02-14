@@ -9,6 +9,7 @@ mod p0038;
 mod p0045;
 mod p0048;
 mod p0049;
+mod p0067;
 mod p0079;
 mod p0091;
 mod p0112;
