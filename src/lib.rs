@@ -56,6 +56,7 @@ mod p0967;
 mod p0976;
 mod p0981;
 mod p0985;
+mod p0989;
 mod p0990;
 mod p1047;
 mod p1071;
