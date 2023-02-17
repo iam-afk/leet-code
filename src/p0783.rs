@@ -4,24 +4,28 @@ use crate::{Solution, TreeNode};
 
 impl Solution {
     pub fn min_diff_in_bst(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        let mut min_diff = i32::MAX;
-        Self::min_diff_in_subbst(root, -100_000, &mut min_diff);
-        min_diff
+        Self::min_diff_in_subbst(root, &mut None).unwrap()
     }
 
     fn min_diff_in_subbst(
         root: Option<Rc<RefCell<TreeNode>>>,
-        prev: i32,
-        min_diff: &mut i32,
-    ) -> i32 {
+        prev: &mut Option<i32>,
+    ) -> Option<i32> {
         if let Some(node) = root {
             let mut node = node.borrow_mut();
-            let last = Self::min_diff_in_subbst(node.left.take(), prev, min_diff);
-            *min_diff = (node.val - last).abs().min(*min_diff);
-            let last = Self::min_diff_in_subbst(node.right.take(), node.val, min_diff);
-            last
+
+            let mut min_diff = Self::min_diff_in_subbst(node.left.take(), prev);
+            if let Some(prev_val) = prev {
+                let diff = (node.val - *prev_val).abs();
+                min_diff = min_diff.map(|v| v.min(diff)).or(Some(diff));
+            }
+            prev.replace(node.val);
+            if let Some(diff) = Self::min_diff_in_subbst(node.right.take(), prev) {
+                min_diff = min_diff.map(|v| v.min(diff)).or(Some(diff));
+            }
+            min_diff
         } else {
-            prev
+            None
         }
     }
 }
