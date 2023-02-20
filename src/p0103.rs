@@ -54,6 +54,9 @@ mod tests {
             Solution::zigzag_level_order(tree![3, 9, 20, null, null, 15, 7])
         );
         assert_eq!(vec![vec![1]], Solution::zigzag_level_order(tree![1]));
-        assert_eq!(vec![], Solution::zigzag_level_order(tree![]));
+        assert_eq!(
+            Vec::<Vec<i32>>::new(),
+            Solution::zigzag_level_order(tree![])
+        );
     }
 }
