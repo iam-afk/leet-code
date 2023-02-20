@@ -16,6 +16,8 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::BTreeSet;
+
     use super::*;
 
     #[test]
@@ -28,8 +30,18 @@ mod tests {
                 "ate".into(),
                 "nat".into(),
                 "bat".into()
-            ]),
-            [vec!["bat"], vec!["nat", "tan"], vec!["ate", "eat", "tea"]]
+            ])
+            .into_iter()
+            .map(|v| BTreeSet::from_iter(v))
+            .collect::<BTreeSet<BTreeSet<String>>>(),
+            [
+                vec!["bat".into()],
+                vec!["nat".into(), "tan".into()],
+                vec!["ate".into(), "eat".into(), "tea".into()]
+            ]
+            .into_iter()
+            .map(|v| { BTreeSet::from_iter(v) })
+            .collect::<BTreeSet<BTreeSet<String>>>()
         );
         assert_eq!(Solution::group_anagrams(vec!["".into()]), [vec![""]]);
         assert_eq!(Solution::group_anagrams(vec!["a".into()]), [vec!["a"]]);
