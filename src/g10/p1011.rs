@@ -2,24 +2,33 @@ use crate::Solution;
 
 impl Solution {
     pub fn ship_within_days(weights: Vec<i32>, days: i32) -> i32 {
-        let mut least_weight = weights.iter().max().unwrap().clone();
-        loop {
-            let mut d = 0;
-            let mut day_weight = least_weight;
-            for &weight in weights.iter() {
-                if day_weight + weight > least_weight {
-                    d += 1;
-                    day_weight = weight;
-                } else {
-                    day_weight += weight;
+        let mut left = weights.iter().max().unwrap() - 1;
+        let mut right = weights.iter().sum();
+
+        fn enough(max_weight: i32, mut days: i32, weights: &[i32]) -> bool {
+            let mut day_weight = max_weight;
+            for weight in weights {
+                if weight + day_weight > max_weight {
+                    if days == 0 {
+                        return false;
+                    }
+                    days -= 1;
+                    day_weight = 0;
                 }
+                day_weight += weight;
             }
-            if d <= days {
-                break;
-            }
-            least_weight += 1;
+            true
         }
-        least_weight
+
+        while left < right - 1 {
+            let middle = left + (right - left) / 2;
+            if enough(middle, days, &weights) {
+                right = middle;
+            } else {
+                left = middle;
+            }
+        }
+        right
     }
 }
 
