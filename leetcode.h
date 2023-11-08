@@ -1,13 +1,8 @@
 #include <limits.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-static int
-max(int a, int b)
-{
-  return a > b ? a : b;
-}
 
 struct TreeNode
 {
