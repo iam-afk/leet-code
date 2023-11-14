@@ -3,23 +3,28 @@ countPalindromicSubsequence(char* s)
 {
   size_t n = strlen(s);
 
-  struct
-  {
-    int l, r;
-  } index[26] = { [0 ... 25] = { -1, 0 } };
+  int set[100000];
 
-  for (int i = 0; s[i] != 0; ++i) {
-    if (index[s[i] - 'a'].l < 0)
-      index[s[i] - 'a'].l = i;
-    index[s[i] - 'a'].r = i;
+  int prefix_set = 0;
+  for (int i = 0; i < n; ++i) {
+    set[i] = prefix_set;
+    prefix_set |= 1 << (s[i] - 'a');
+  }
+  int suffix_set = 0;
+  for (int j = n; j-- > 0;) {
+    set[j] &= suffix_set;
+    suffix_set |= 1 << (s[j] - 'a');
   }
 
-  int a = 0;
+  int letter_set[26] = { 0 };
+  for (int i = 1; i < n - 1; ++i) {
+    letter_set[s[i] - 'a'] |= set[i];
+  }
+
+  int answer = 0;
   for (int i = 0; i < 26; ++i) {
-    int x = 0;
-    for (int j = index[i].l + 1; j < index[i].r; ++j)
-      x |= 1 << (s[j] - 'a');
-    a += __builtin_popcount(x);
+    answer += __builtin_popcount(letter_set[i]);
   }
-  return a;
+
+  return answer;
 }
