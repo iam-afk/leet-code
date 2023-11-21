@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "uthash.h"
+
 struct TreeNode
 {
   int val;
