@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <limits.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -6,6 +7,12 @@
 #include <string.h>
 
 #include "uthash.h"
+
+struct ListNode
+{
+  int val;
+  struct ListNode* next;
+};
 
 struct TreeNode
 {
