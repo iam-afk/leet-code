@@ -1,14 +1,15 @@
 // @leet start
-static int
-compare_ints(void const* a, void const* b)
-{
-  return *(int const*)a - *(int const*)b;
-}
-
 int
 majorityElement(int* nums, int nums_size)
 {
-  qsort(nums, nums_size, sizeof(int), compare_ints);
-  return nums[nums_size / 2];
+  int m, d = 0;
+  for (int i = 0; i < nums_size; ++i)
+    if (d == 0)
+      m = nums[i], d = 1;
+    else if (nums[i] == m)
+      ++d;
+    else
+      --d;
+  return m;
 }
 // @leet end
