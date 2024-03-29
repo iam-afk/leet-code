@@ -12,17 +12,16 @@ countSubarrays(int* nums, int nums_size, int k)
   int mx = 0;
   for (int i = 0; i < nums_size; ++i)
     mx = max(mx, nums[i]);
-  int d[100001] = { 0 };
-  for (int i = 0, n = 0; i < nums_size; ++i) {
-    if (nums[i] == mx)
-      ++n;
-    d[i + 1] = n;
-  }
   long long ans = 0;
-  for (int i = 1, r = 1; i <= nums_size; ++i) {
-    while (r <= nums_size && d[r] - d[i - 1] < k)
-      ++r;
-    ans += nums_size - r + 1;
+  for (int i = 0, j = 0; j < nums_size; ++j) {
+    if (nums[j] == mx)
+      --k;
+    while (k == 0) {
+      if (nums[i] == mx)
+        ++k;
+      ++i;
+    }
+    ans += i;
   }
   return ans;
 }
