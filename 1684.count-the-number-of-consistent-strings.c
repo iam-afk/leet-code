@@ -3,15 +3,15 @@
 int
 countConsistentStrings(char* allowed, char** words, int wordsSize)
 {
-  bool set[26] = { [0 ... 25] = false };
+  unsigned set = 0;
   while (*allowed)
-    set[*allowed++ - 'a'] = true;
+    set |= 1 << (*allowed++ - 'a');
   int answewr = 0;
   for (int i = 0; i < wordsSize; ++i) {
     bool consistent = true;
     char* word = words[i];
     while (consistent && *word)
-      consistent = set[*word++ - 'a'];
+      consistent = (set & 1 << (*word++ - 'a')) != 0;
     answewr += consistent;
   }
   return answewr;
