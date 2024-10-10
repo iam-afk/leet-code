@@ -11,37 +11,20 @@
 int
 maxWidthRamp(int* nums, int numsSize)
 {
-  static struct
-  {
-    int val, idx;
-  } stack[N];
+  static int idx[N];
 
-  int top = 0;
-  stack[top].val = nums[0];
-  stack[top].idx = 0;
+  int j = 0;
+  idx[j] = 0;
+
+  for (int i = 1; i < numsSize; ++i)
+    if (nums[i] < nums[idx[j]])
+      idx[++j] = i;
 
   int ans = 0;
-  for (int i = 1; i < numsSize; ++i) {
-    if (nums[i] >= stack[0].val)
-      ans = max(ans, i);
-    else {
-      int l = 0, r = top + 1;
-      while (l + 1 < r) {
-        int m = l + (r - l) / 2;
-        if (stack[m].val > nums[i])
-          l = m;
-        else
-          r = m;
-      }
-      if (r <= top)
-        ans = max(ans, i - stack[r].idx);
-    }
-    if (nums[i] < stack[top].val) {
-      ++top;
-      stack[top].val = nums[i];
-      stack[top].idx = i;
-    }
-  }
+  for (int i = numsSize; i-- > 0;)
+    while (j >= 0 && nums[i] >= nums[idx[j]])
+      ans = max(ans, i - idx[j--]);
+
   return ans;
 }
 // @leet end
