@@ -8,9 +8,9 @@ closestPrimes(int left, int right, int* returnSize)
   bool p[1000010];
   memset(p, true, right + 1);
   p[1] = false;
-  for (int i = 2; i <= right; ++i)
+  for (int i = 2; i * i <= right; ++i)
     if (p[i])
-      for (uint64_t j = 1LL * i * i; j <= right; j += i)
+      for (int j = i * i; j <= right; j += i)
         p[j] = false;
 
   *returnSize = 2;
