@@ -1,27 +1,23 @@
 // @leet start
-#define max(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a > _b ? _a : _b;                                                                             \
-  })
-
 long long
-countSubarrays(int* nums, int nums_size, int k)
+countSubarrays(int* nums, int numsSize, int k)
 {
-  int mx = 0;
-  for (int i = 0; i < nums_size; ++i)
-    mx = max(mx, nums[i]);
-  long long ans = 0;
-  for (int i = 0, j = 0; j < nums_size; ++j) {
-    if (nums[j] == mx)
-      --k;
-    while (k == 0) {
-      if (nums[i] == mx)
-        ++k;
-      ++i;
+  int64_t ans = 0;
+  int mx = nums[0];
+  for (int i = 1; i < numsSize; ++i)
+    if (mx < nums[i])
+      mx = nums[i];
+  int mxn = 0;
+  for (int l = 0, r = 0; r < numsSize; ++r) {
+    if (nums[r] == mx)
+      ++mxn;
+    if (mxn >= k) {
+      for (; l <= r && mxn >= k; ++l) {
+        ans += numsSize - r;
+        if (nums[l] == mx)
+          --mxn;
+      }
     }
-    ans += i;
   }
   return ans;
 }
