@@ -29,14 +29,12 @@ largestSubmatrix(int** matrix, int matrix_size, int* matrix_col_size)
       column_in_heights[heights[j].index] = true;
     }
     for (int j = 0; j < n; ++j)
-      if (!column_in_heights[j] && matrix[i][j] == 1) {
+      if (!column_in_heights[j] && matrix[i][j] == 1)
         heights[next_heights_len++] = (height_t){ .height = 1, .index = j };
-      }
     heights_len = next_heights_len;
 
-    for (int j = 0; j < heights_len; ++j) {
+    for (int j = 0; j < heights_len; ++j)
       answer = max(answer, heights[j].height * (j + 1));
-    }
   }
   return answer;
 }

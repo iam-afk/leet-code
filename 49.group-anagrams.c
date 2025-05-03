@@ -38,9 +38,8 @@ groupAnagrams(char** strs, int strs_size, int* ret_size, int** ret_sizes)
       ++to;
     groups_size[n] = to - from;
     groups[n] = calloc(to - from, sizeof *groups);
-    for (int i = 0, j = from; j < to; ++i, ++j) {
+    for (int i = 0, j = from; j < to; ++i, ++j)
       groups[n][i] = strs[str_index[j]];
-    }
     ++n;
     from = to;
   }

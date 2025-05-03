@@ -16,8 +16,7 @@ minPairSum(int* nums, int nums_size)
 {
   qsort(nums, nums_size, sizeof(int), compare_ints);
   int maximum = nums[0] + nums[nums_size - 1];
-  for (int i = 1; i < nums_size / 2; ++i) {
+  for (int i = 1; i < nums_size / 2; ++i)
     maximum = max(maximum, nums[i] + nums[nums_size - 1 - i]);
-  }
   return maximum;
 }

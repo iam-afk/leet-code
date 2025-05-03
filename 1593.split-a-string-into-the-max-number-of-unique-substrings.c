@@ -18,9 +18,8 @@ find(char* s, struct trie* root, int n, int* mx)
   struct trie** node = &root;
   for (int i = 0; s[i]; ++i) {
     node = &(*node)->next[s[i] - 'a'];
-    if (*node == 0) {
+    if (*node == 0)
       *node = next++;
-    }
     if (!(*node)->word) {
       (*node)->word = true;
       find(s + i + 1, root, n + 1, mx);

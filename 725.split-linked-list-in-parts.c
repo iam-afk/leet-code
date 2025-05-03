@@ -18,9 +18,8 @@ splitListToParts(struct ListNode* head, int k, int* returnSize)
   for (int i = 0; i < k; ++i) {
     struct ListNode *slow = head, *fast = head;
     while (fast) {
-      for (int j = i; fast && j < k; ++j) {
+      for (int j = i; fast && j < k; ++j)
         fast = fast->next;
-      }
       struct ListNode* last = slow;
       slow = slow->next;
       if (!fast)

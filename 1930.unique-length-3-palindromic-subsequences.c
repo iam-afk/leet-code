@@ -17,14 +17,12 @@ countPalindromicSubsequence(char* s)
   }
 
   int letter_set[26] = { 0 };
-  for (int i = 1; i < n - 1; ++i) {
+  for (int i = 1; i < n - 1; ++i)
     letter_set[s[i] - 'a'] |= set[i];
-  }
 
   int answer = 0;
-  for (int i = 0; i < 26; ++i) {
+  for (int i = 0; i < 26; ++i)
     answer += __builtin_popcount(letter_set[i]);
-  }
 
   return answer;
 }

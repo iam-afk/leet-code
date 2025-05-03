@@ -13,9 +13,8 @@ static void
 updateLevelSum(struct TreeNode* node, int level, long long* sums, int* sumsSize)
 {
   if (node) {
-    if (level == *sumsSize) {
+    if (level == *sumsSize)
       sums[(*sumsSize)++] = 0;
-    }
     sums[level] += node->val;
     updateLevelSum(node->left, level + 1, sums, sumsSize);
     updateLevelSum(node->right, level + 1, sums, sumsSize);

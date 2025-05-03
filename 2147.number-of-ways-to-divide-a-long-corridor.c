@@ -1,7 +1,7 @@
 int
 numberOfWays(char* corridor)
 {
-  const uint64_t M = 1e9 + 7;
+  uint64_t const M = 1e9 + 7;
 
   int s = 0;
   char* t = corridor;

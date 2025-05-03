@@ -7,9 +7,8 @@ int*
 getSumAbsoluteDifferences(int* nums, int nums_size, int* return_size)
 {
   int sum = 0;
-  for (int i = 0; i < nums_size; ++i) {
+  for (int i = 0; i < nums_size; ++i)
     sum += nums[i];
-  }
 
   int* result = calloc(nums_size, sizeof *result);
   *return_size = nums_size;

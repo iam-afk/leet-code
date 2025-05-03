@@ -95,10 +95,9 @@ mostBooked(int n, int** meetings, int meetings_size, int* meetings_col_size)
     ++d[room];
   }
   int r = 0, mx = 0;
-  for (int i = 0; i < n; ++i) {
+  for (int i = 0; i < n; ++i)
     if (mx < d[i])
       mx = d[i], r = i;
-  }
   return r;
 }
 // @leet end

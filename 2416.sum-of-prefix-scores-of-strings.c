@@ -24,9 +24,8 @@ sumPrefixScores(char** words, int wordsSize, int* returnSize)
     struct trie* p = &root;
     for (char const* word = words[i]; *word; ++word) {
       int j = *word - 'a';
-      if (!p->children[j].index) {
+      if (!p->children[j].index)
         p->children[j].index = ++free;
-      }
       ++p->children[j].count;
       p = buffer + p->children[j].index;
     }

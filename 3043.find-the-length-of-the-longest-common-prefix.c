@@ -30,9 +30,8 @@ longestCommonPrefix(int* arr1, int arr1Size, int* arr2, int arr2Size)
     sprintf(buf, "%d", arr2[i]);
     struct node* p = &root;
     int j = 0;
-    for (; buf[j] && p->next[buf[j] - '0']; ++j) {
+    for (; buf[j] && p->next[buf[j] - '0']; ++j)
       p = p->next[buf[j] - '0'];
-    }
     if (mx < j)
       mx = j;
   }

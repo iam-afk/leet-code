@@ -19,8 +19,7 @@ knightDialer(int n)
     q = t;
   }
   int answer = 0;
-  for (int i = 0; i < 10; ++i) {
+  for (int i = 0; i < 10; ++i)
     answer = (answer + p[i]) % M;
-  }
   return answer;
 }
