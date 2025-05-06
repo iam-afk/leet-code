@@ -5,10 +5,11 @@
 int*
 buildArray(int* nums, int numsSize, int* returnSize)
 {
-  int* ret = calloc(numsSize, sizeof *ret);
   *returnSize = numsSize;
   for (int i = 0; i < numsSize; ++i)
-    ret[i] = nums[nums[i]];
-  return ret;
+    nums[i] += nums[nums[i]] % 1000 * 1000;
+  for (int i = 0; i < numsSize; ++i)
+    nums[i] /= 1000;
+  return nums;
 }
 // @leet end
