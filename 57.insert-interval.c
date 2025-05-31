@@ -2,13 +2,14 @@
 /**
  * Return an array of arrays of size *returnSize.
  * The sizes of the arrays are returned as *returnColumnSizes array.
- * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ * Note: Both returned array and *columnSizes array must be malloced, assume
+ * caller calls free().
  */
-#define max(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a > _b ? _a : _b;                                                                             \
+#define max(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = (a);                                                   \
+    __typeof__(b) _b = (b);                                                   \
+    _a > _b ? _a : _b;                                                        \
   })
 
 #define N ((size_t)10000)

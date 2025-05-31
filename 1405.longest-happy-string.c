@@ -1,9 +1,9 @@
 // @leet start
-#define swap(a, b)                                                                                 \
-  {                                                                                                \
-    __typeof__(a) _t = (a);                                                                        \
-    (a) = (b);                                                                                     \
-    (b) = _t;                                                                                      \
+#define swap(a, b)                                                            \
+  {                                                                           \
+    __typeof__(a) _t = (a);                                                   \
+    (a) = (b);                                                                \
+    (b) = _t;                                                                 \
   }
 
 char*
@@ -13,7 +13,9 @@ longestDiverseString(int a, int b, int c)
   {
     char c;
     int n;
-  } d[3] = { { .c = 'a', .n = a }, { .c = 'b', .n = b }, { .c = 'c', .n = c } };
+  } d[3] = { { .c = 'a', .n = a },
+             { .c = 'b', .n = b },
+             { .c = 'c', .n = c } };
 
   if (d[0].n < d[1].n)
     swap(d[0], d[1]);

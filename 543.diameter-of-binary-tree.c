@@ -7,11 +7,11 @@
  *     struct TreeNode *right;
  * };
  */
-#define max(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a > _b ? _a : _b;                                                                             \
+#define max(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = (a);                                                   \
+    __typeof__(b) _b = (b);                                                   \
+    _a > _b ? _a : _b;                                                        \
   })
 
 struct diameter_and_depth
@@ -27,7 +27,8 @@ diameter_and_depth(struct TreeNode* node)
   struct diameter_and_depth left = diameter_and_depth(node->left);
   struct diameter_and_depth right = diameter_and_depth(node->right);
   return (struct diameter_and_depth){
-    .diameter = max(left.depth + right.depth, max(left.diameter, right.diameter)),
+    .diameter =
+      max(left.depth + right.depth, max(left.diameter, right.diameter)),
     .depth = max(left.depth, right.depth) + 1,
   };
 }

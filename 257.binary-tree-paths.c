@@ -9,7 +9,11 @@
 
 #include <stdio.h>
 static void
-dfs(struct TreeNode* node, int* path, int path_size, char** paths, int* paths_size)
+dfs(struct TreeNode* node,
+    int* path,
+    int path_size,
+    char** paths,
+    int* paths_size)
 {
   path[path_size++] = node->val;
   if (node->left == 0 && node->right == 0) {

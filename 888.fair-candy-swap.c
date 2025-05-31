@@ -9,7 +9,11 @@ compare_ints(void const* a, void const* b)
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int*
-fairCandySwap(int* alice_sizes, int alice_sizes_size, int* bob_sizes, int bob_sizes_size, int* size)
+fairCandySwap(int* alice_sizes,
+              int alice_sizes_size,
+              int* bob_sizes,
+              int bob_sizes_size,
+              int* size)
 {
   int* answer = calloc(2, sizeof *answer);
   int d = 0;
@@ -20,7 +24,8 @@ fairCandySwap(int* alice_sizes, int alice_sizes_size, int* bob_sizes, int bob_si
   qsort(bob_sizes, bob_sizes_size, sizeof(int), compare_ints);
   for (int i = 0; i < alice_sizes_size; ++i) {
     int alice_size = alice_sizes[i], bob_size = alice_size - d / 2;
-    if (bsearch(&bob_size, bob_sizes, bob_sizes_size, sizeof(int), compare_ints)) {
+    if (bsearch(
+          &bob_size, bob_sizes, bob_sizes_size, sizeof(int), compare_ints)) {
       answer[0] = alice_size;
       answer[1] = bob_size;
       break;

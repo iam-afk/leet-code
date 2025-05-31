@@ -7,11 +7,11 @@ compare_ints(void const* a, void const* b)
   return *(int const*)a - *(int const*)b;
 }
 
-#define min(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a < _b ? _a : _b;                                                                             \
+#define min(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = (a);                                                   \
+    __typeof__(b) _b = (b);                                                   \
+    _a < _b ? _a : _b;                                                        \
   })
 
 int

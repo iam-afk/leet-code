@@ -1,6 +1,9 @@
 // @leet start
 int
-countStudents(int* students, int students_size, int* sandwiches, int sandwiches_size)
+countStudents(int* students,
+              int students_size,
+              int* sandwiches,
+              int sandwiches_size)
 {
   int c = 0, s = 0;
   for (int i = 0; i < students_size; ++i)

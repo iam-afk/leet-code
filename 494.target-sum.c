@@ -1,11 +1,11 @@
 // @leet start
 #define N 1000
 
-#define swap(a, b)                                                                                 \
-  {                                                                                                \
-    __typeof__(a) _t = (a);                                                                        \
-    (a) = (b);                                                                                     \
-    (b) = _t;                                                                                      \
+#define swap(a, b)                                                            \
+  {                                                                           \
+    __typeof__(a) _t = (a);                                                   \
+    (a) = (b);                                                                \
+    (b) = _t;                                                                 \
   }
 
 int

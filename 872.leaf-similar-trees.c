@@ -37,6 +37,7 @@ leafSimilar(struct TreeNode* root1, struct TreeNode* root2)
 {
   int leafs[200], leaf_size = 0, leaf_index = 0;
   dumpLeafs(root1, leafs, &leaf_size);
-  return checkLeafs(root2, leafs, leaf_size, &leaf_index) && leaf_index == leaf_size;
+  return checkLeafs(root2, leafs, leaf_size, &leaf_index) &&
+         leaf_index == leaf_size;
 }
 // @leet end

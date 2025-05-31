@@ -14,7 +14,9 @@ struct leftmost_at
 };
 
 static void
-update_leftmost_at_depth(struct TreeNode* node, struct leftmost_at* leftmost_at, int depth)
+update_leftmost_at_depth(struct TreeNode* node,
+                         struct leftmost_at* leftmost_at,
+                         int depth)
 {
   if (node == 0)
     return;

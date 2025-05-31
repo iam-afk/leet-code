@@ -2,7 +2,10 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int*
-findDiagonalOrder(int** nums, int nums_size, int* nums_col_size, int* return_size)
+findDiagonalOrder(int** nums,
+                  int nums_size,
+                  int* nums_col_size,
+                  int* return_size)
 {
   *return_size = 0;
   for (int i = 0; i < nums_size; ++i)

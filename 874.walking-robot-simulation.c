@@ -1,10 +1,10 @@
 // @leet start
 
-#define max(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a > _b ? _a : _b;                                                                             \
+#define max(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = (a);                                                   \
+    __typeof__(b) _b = (b);                                                   \
+    _a > _b ? _a : _b;                                                        \
   })
 
 static int
@@ -16,7 +16,11 @@ compareInts(void const* a, void const* b)
 }
 
 int
-robotSim(int* commands, int commandsSize, int** obstacles, int obstaclesSize, int* obstaclesColSize)
+robotSim(int* commands,
+         int commandsSize,
+         int** obstacles,
+         int obstaclesSize,
+         int* obstaclesColSize)
 {
   qsort(obstacles, obstaclesSize, sizeof(int*), compareInts);
   int x = 0, y = 0;

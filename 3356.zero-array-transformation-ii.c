@@ -19,7 +19,11 @@ zeros(int* a, int n, int** q, int k)
 }
 
 int
-minZeroArray(int* nums, int numsSize, int** queries, int queriesSize, int* queriesColSize)
+minZeroArray(int* nums,
+             int numsSize,
+             int** queries,
+             int queriesSize,
+             int* queriesColSize)
 {
   if (zeros(nums, numsSize, queries, -1))
     return 0;

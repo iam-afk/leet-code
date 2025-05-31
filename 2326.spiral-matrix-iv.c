@@ -9,10 +9,15 @@
 /**
  * Return an array of arrays of size *returnSize.
  * The sizes of the arrays are returned as *returnColumnSizes array.
- * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ * Note: Both returned array and *columnSizes array must be malloced, assume
+ * caller calls free().
  */
 int**
-spiralMatrix(int m, int n, struct ListNode* head, int* returnSize, int** returnColumnSizes)
+spiralMatrix(int m,
+             int n,
+             struct ListNode* head,
+             int* returnSize,
+             int** returnColumnSizes)
 {
   int** ret = calloc(m, sizeof *ret);
   *returnSize = m;
@@ -25,7 +30,8 @@ spiralMatrix(int m, int n, struct ListNode* head, int* returnSize, int** returnC
 
   int i = 0, j = -1, di = 0, dj = 1;
   while (head) {
-    if (0 <= i + di && i + di < m && 0 <= j + dj && j + dj < n && ret[i + di][j + dj] == -1) {
+    if (0 <= i + di && i + di < m && 0 <= j + dj && j + dj < n &&
+        ret[i + di][j + dj] == -1) {
       ret[i += di][j += dj] = head->val;
       head = head->next;
     } else {

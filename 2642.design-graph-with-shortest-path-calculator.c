@@ -1,8 +1,8 @@
-#define min(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = a;                                                                          \
-    __typeof__(b) _b = b;                                                                          \
-    _a < _b ? _a : _b;                                                                             \
+#define min(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = a;                                                     \
+    __typeof__(b) _b = b;                                                     \
+    _a < _b ? _a : _b;                                                        \
   })
 
 typedef struct
@@ -38,7 +38,8 @@ graphAddEdge(Graph* graph, int* edge, int edge_size)
   int v = edge[0], u = edge[1], w = edge[2];
   for (int i = 0; i < graph->size; ++i)
     for (int j = 0; j < graph->size; ++j)
-      graph->i[i][j] = min(graph->i[i][j], graph->i[i][v] + w + graph->i[u][j]);
+      graph->i[i][j] =
+        min(graph->i[i][j], graph->i[i][v] + w + graph->i[u][j]);
 }
 
 int

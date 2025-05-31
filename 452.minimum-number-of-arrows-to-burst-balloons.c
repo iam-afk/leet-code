@@ -4,14 +4,17 @@ compare_points(void const* lhs, void const* rhs)
 {
   int const* a = *(int const* const*)lhs;
   int const* b = *(int const* const*)rhs;
-  return a[0] != b[0] ? (a[0] < b[0] ? -1 : 1) : (a[1] == b[1] ? 0 : a[1] < b[1] ? -1 : 1);
+  return a[0] != b[0] ? (a[0] < b[0] ? -1 : 1)
+                      : (a[1] == b[1]  ? 0
+                         : a[1] < b[1] ? -1
+                                       : 1);
 }
 
-#define min(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a < _b ? _a : _b;                                                                             \
+#define min(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = (a);                                                   \
+    __typeof__(b) _b = (b);                                                   \
+    _a < _b ? _a : _b;                                                        \
   })
 
 int

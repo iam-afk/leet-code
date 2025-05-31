@@ -21,8 +21,8 @@ insertGreatestCommonDivisors(struct ListNode* head)
   struct ListNode* current = head;
   while (current->next) {
     struct ListNode* node = malloc(sizeof *node);
-    *node =
-      (struct ListNode){ .val = gcd(current->val, current->next->val), .next = current->next };
+    *node = (struct ListNode){ .val = gcd(current->val, current->next->val),
+                               .next = current->next };
     current->next = node;
     current = node->next;
   }

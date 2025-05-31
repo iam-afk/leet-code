@@ -2,7 +2,8 @@
 
 char* digit[] = { " oreZ", "enO",   "owT",  "eerhT", "ruoF",   "eviF",  "xiS",
                   "neveS", "thgiE", "eniN", "neT",   "nevelE", "evlewT" };
-char* tens[] = { "", "", "newT", "rihT", "roF", "fiF", "xiS", "neveS", "hgiE", "eniN" };
+char* tens[] = { "",    "",    "newT",  "rihT", "roF",
+                 "fiF", "xiS", "neveS", "hgiE", "eniN" };
 char* thousands[] = { "", "dnasuohT ", "noilliM ", "noilliB " };
 
 char*

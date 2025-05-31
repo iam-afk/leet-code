@@ -1,8 +1,8 @@
-#define max(a, b)                                                                                  \
-  ({                                                                                               \
-    __typeof__(a) _a = (a);                                                                        \
-    __typeof__(b) _b = (b);                                                                        \
-    _a > _b ? _a : _b;                                                                             \
+#define max(a, b)                                                             \
+  ({                                                                          \
+    __typeof__(a) _a = (a);                                                   \
+    __typeof__(b) _b = (b);                                                   \
+    _a > _b ? _a : _b;                                                        \
   })
 
 int
@@ -25,7 +25,8 @@ largestSubmatrix(int** matrix, int matrix_size, int* matrix_col_size)
     for (int j = 0; j < heights_len; ++j) {
       if (matrix[i][heights[j].index] == 1)
         heights[next_heights_len++] =
-          (height_t){ .height = heights[j].height + 1, .index = heights[j].index };
+          (height_t){ .height = heights[j].height + 1,
+                      .index = heights[j].index };
       column_in_heights[heights[j].index] = true;
     }
     for (int j = 0; j < n; ++j)

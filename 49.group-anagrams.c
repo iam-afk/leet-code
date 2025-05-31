@@ -2,7 +2,8 @@
 /**
  * Return an array of arrays of size *returnSize.
  * The sizes of the arrays are returned as *returnColumnSizes array.
- * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ * Note: Both returned array and *columnSizes array must be malloced, assume
+ * caller calls free().
  */
 #define N (size_t)1e4
 
@@ -34,7 +35,8 @@ groupAnagrams(char** strs, int strs_size, int* ret_size, int** ret_sizes)
   int from = 0, n = 0;
   while (from < strs_size) {
     int to = from + 1;
-    while (to < strs_size && memcmp(counts[str_index[from]], counts[str_index[to]], 26) == 0)
+    while (to < strs_size &&
+           memcmp(counts[str_index[from]], counts[str_index[to]], 26) == 0)
       ++to;
     groups_size[n] = to - from;
     groups[n] = calloc(to - from, sizeof *groups);

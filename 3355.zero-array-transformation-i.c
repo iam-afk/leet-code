@@ -1,7 +1,11 @@
 // @leet start
 
 bool
-isZeroArray(int* nums, int numsSize, int** queries, int queriesSize, int* queriesColSize)
+isZeroArray(int* nums,
+            int numsSize,
+            int** queries,
+            int queriesSize,
+            int* queriesColSize)
 {
   int d[100001];
   memset(d, 0, numsSize * sizeof *d);

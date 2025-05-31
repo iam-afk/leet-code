@@ -8,7 +8,8 @@ restoreArray(int** adjacent_pairs,
              int* return_size)
 {
 #define N 100000
-  int p1[2 * N + 1] = { [0 ... 2 * N] = INT_MIN }, p2[2 * N + 1] = { [0 ... 2 * N] = INT_MIN };
+  int p1[2 * N + 1] = { [0 ... 2 * N] = INT_MIN },
+                 p2[2 * N + 1] = { [0 ... 2 * N] = INT_MIN };
   for (int i = 0; i < adjacent_pairs_size; ++i) {
     int n1 = adjacent_pairs[i][0], n2 = adjacent_pairs[i][1];
     (p1[n1 + N] == INT_MIN ? p1 : p2)[n1 + N] = n2;

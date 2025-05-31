@@ -9,7 +9,11 @@ compare_ints(void const* a, void const* b)
 }
 
 int*
-intersection(int* nums1, int nums1_size, int* nums2, int nums2_size, int* ret_size)
+intersection(int* nums1,
+             int nums1_size,
+             int* nums2,
+             int nums2_size,
+             int* ret_size)
 {
   qsort(nums1, nums1_size, sizeof(int), compare_ints);
   qsort(nums2, nums2_size, sizeof(int), compare_ints);

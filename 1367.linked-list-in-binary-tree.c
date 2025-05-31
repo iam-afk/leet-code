@@ -21,8 +21,8 @@ isSubPathFrom(struct TreeNode* node, struct ListNode* head)
     return true;
   if (!node)
     return false;
-  return node->val == head->val &&
-         (isSubPathFrom(node->left, head->next) || isSubPathFrom(node->right, head->next));
+  return node->val == head->val && (isSubPathFrom(node->left, head->next) ||
+                                    isSubPathFrom(node->right, head->next));
 }
 
 bool

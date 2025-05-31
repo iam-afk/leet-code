@@ -10,7 +10,10 @@
 #define N (size_t)1e5
 
 static void
-updateLevelSum(struct TreeNode* node, int level, long long* sums, int* sumsSize)
+updateLevelSum(struct TreeNode* node,
+               int level,
+               long long* sums,
+               int* sumsSize)
 {
   if (node) {
     if (level == *sumsSize)

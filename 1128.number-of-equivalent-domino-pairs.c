@@ -1,9 +1,9 @@
 // @leet start
-#define swap(a, b)                                                                                 \
-  ({                                                                                               \
-    __typeof__(a) _t = (a);                                                                        \
-    (a) = (b);                                                                                     \
-    (b) = _t;                                                                                      \
+#define swap(a, b)                                                            \
+  ({                                                                          \
+    __typeof__(a) _t = (a);                                                   \
+    (a) = (b);                                                                \
+    (b) = _t;                                                                 \
   })
 
 int

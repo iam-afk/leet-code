@@ -1,5 +1,8 @@
 int
-garbageCollection(char** garbage, int garbage_size, int* travel, int travel_size)
+garbageCollection(char** garbage,
+                  int garbage_size,
+                  int* travel,
+                  int travel_size)
 {
   int prefix[100000];
   prefix[0] = 0;

@@ -1,5 +1,5 @@
 ---
 BasedOnStyle: Mozilla
-ColumnLimit: 100
+ColumnLimit: 79
 QualifierAlignment: Right
 RemoveBracesLLVM: true

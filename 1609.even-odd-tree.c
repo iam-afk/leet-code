@@ -30,14 +30,17 @@ isEvenOddTree(struct TreeNode* root)
 
     prev = queue[--len, head++];
 
-    if ((!prev.even || (prev.node->val & 1) == 0) && (prev.even || (prev.node->val & 1) == 1))
+    if ((!prev.even || (prev.node->val & 1) == 0) &&
+        (prev.even || (prev.node->val & 1) == 1))
       return false;
 
     if (prev.node->left != 0)
-      queue[++len, tail++] = (struct item){ .node = prev.node->left, .even = !prev.even };
+      queue[++len, tail++] =
+        (struct item){ .node = prev.node->left, .even = !prev.even };
 
     if (prev.node->right != 0)
-      queue[++len, tail++] = (struct item){ .node = prev.node->right, .even = !prev.even };
+      queue[++len, tail++] =
+        (struct item){ .node = prev.node->right, .even = !prev.even };
   }
 
   return true;
