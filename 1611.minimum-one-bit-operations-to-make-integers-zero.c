@@ -1,3 +1,4 @@
+// @leet start
 int
 minimumOneBitOperations(int n)
 {
@@ -10,3 +11,4 @@ minimumOneBitOperations(int n)
   }
   return d0;
 }
+// @leet end
