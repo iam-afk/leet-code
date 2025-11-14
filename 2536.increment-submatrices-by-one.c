@@ -17,8 +17,10 @@ rangeAddQueries(int n,
   for (int i = 0; i < queriesSize; ++i) {
     int r1 = queries[i][0], c1 = queries[i][1], r2 = queries[i][2],
         c2 = queries[i][3];
-    for (int r = r1; r <= r2; ++r)
-      d[r][c1] += 1, d[r][c2 + 1] -= 1;
+    d[r1][c1] += 1;
+    d[r1][c2 + 1] -= 1;
+    d[r2 + 1][c1] -= 1;
+    d[r2 + 1][c2 + 1] += 1;
   }
 
   int** ret = calloc(n, sizeof *ret);
@@ -28,11 +30,11 @@ rangeAddQueries(int n,
     ret[i] = calloc(n, sizeof *ret[i]);
     (*returnColumnSizes)[i] = n;
   }
-  for (int r = 0; r < n; ++r) {
-    int v = 0;
+  for (int r = 0; r < n; ++r)
     for (int c = 0; c < n; ++c)
-      ret[r][c] = v += d[r][c];
-  }
+      ret[r][c] = d[r][c] + (r == 0 ? 0 : ret[r - 1][c]) +
+                  (c == 0 ? 0 : ret[r][c - 1]) -
+                  (r == 0 || c == 0 ? 0 : ret[r - 1][c - 1]);
   return ret;
 }
 // @leet end
