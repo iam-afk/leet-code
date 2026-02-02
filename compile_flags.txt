@@ -1,3 +1,4 @@
 --include<leetcode.h>
--xc
--std=gnu11
+--include<bits/stdc++.h>
+-xc++
+-std=c++23
