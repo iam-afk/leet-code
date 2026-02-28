@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://json.schemastore.org/clangd.json
+CompileFlags:
+  Add:
+    - --include<leetcode.h>
+    - -xc++
+    - -std=c++23
+Completion:
+  ArgumentLists: OpenDelimiter
+  HeaderInsertion: Never
+  CodePatterns: None
