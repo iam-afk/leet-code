@@ -13,11 +13,8 @@ public:
     int ans{};
     for (int l{}, r{}; r < s.length(); r++) {
       mx = max(mx, ++d[s[r] - 'A']);
-      while (l <= r && r - l + 1 - mx > k) {
-        if (d[s[l] - 'A']-- == mx)
-          mx = *ranges::max_element(d);
-        l++;
-      }
+      for (; l <= r && r - l + 1 - mx > k; l++)
+        d[s[l] - 'A']--;
       ans = max(ans, r - l + 1);
     }
     return ans;
